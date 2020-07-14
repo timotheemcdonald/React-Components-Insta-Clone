@@ -3,11 +3,13 @@ import React from 'react';
 import Comments from '../Comments/Comments';
 import LikeSection from './LikeSection';
 import PostHeader from './PostHeader';
+// import Posts from './Posts';
+// import App from '.../App';
 
 const Post = props => {
   // Make sure the parent of Post is passing the right props!
   const { post, likePost } = props
-
+console.log(post)
   return (
     <div className='post-border'>
       <PostHeader
@@ -22,9 +24,11 @@ const Post = props => {
         />
       </div>
       {/* LikeSection is missing a prop it needs to function! */}
-      <LikeSection likePost={() => likePost(post.id)} />
+      <LikeSection 
+      likeCount={post.likes}
+      likePost={() => likePost(post.id)} />
       {/* Comments also wants its props! */}
-      <Comments />
+      <Comments comments={post.comments}/>
     </div>
   );
 };
